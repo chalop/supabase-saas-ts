@@ -1,5 +1,14 @@
 {
   "compilerOptions": {
+    // NOTE `baseUrl` configuration option allows you to import directly from the root of the project.
+    // While `baseUrl` is useful you might want to add other aliases that don't match 1 on 1.
+    // for this TypeScript has the "paths" option.
+    "baseUrl": ".",
+    // NOTE Using `paths` allows you to configure module aliases. For example @/components/* to components/*.
+    "paths": {
+      "@types": ["types/index"],
+      "@utils/*": ["utils/*"]
+    },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -15,6 +24,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "utils/supabase.js"],
   "exclude": ["node_modules"]
 }
