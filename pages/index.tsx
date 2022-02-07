@@ -1,15 +1,19 @@
 import type { NextPage, GetStaticProps } from "next";
 import { supabase } from "@utils/supabase";
 import { Lesson } from "@types";
+import Link from "next/link";
 
 // NOTE added to the generic the array of lessons type, for auto intellisense
 const Home: NextPage<{ lessons: Lesson[] }> = ({ lessons }) => {
-  console.log("lessons", lessons);
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
+    <div className="w-full max-w-3xl mx-auto my-16 px-2">
       {/* NOTE thanks to the Lesson type, we have intellisense of the object! */}
       {lessons.map((lesson) => (
-        <p key={lesson.id}>{lesson.title}</p>
+        <Link key={lesson.id} href={`/${lesson.id}`}>
+          <a className="p-8 h-40 mb-4 rounded shadow text-xl flex">
+            {lesson.title}
+          </a>
+        </Link>
       ))}
     </div>
   );
